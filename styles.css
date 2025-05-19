@@ -1,0 +1,252 @@
+:root {
+    --green-light: #a8d5ba;
+    --green-medium: #8bc6a4;
+    --gray-light: #f0f0f0;
+    --gray-medium: #d0d0d0;
+    --gray-dark: #707070;
+    --white: #ffffff;
+    --brown-light: #d2b48c;
+    --brown-medium: #b08968;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--gray-light);
+    color: var(--gray-dark);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 2rem auto;
+    background-color: var(--white);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Carousel Styles */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    border-radius: 15px 15px 0 0;
+}
+
+.carousel {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(255, 255, 255, 0.7);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.carousel-button:hover {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.carousel-button.prev {
+    left: 20px;
+}
+
+.carousel-button.next {
+    right: 20px;
+}
+
+/* Content Styles */
+.content {
+    padding: 2.5rem;
+    text-align: center;
+    background: linear-gradient(to bottom, var(--white), var(--gray-light));
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--brown-medium);
+    margin-bottom: 2rem;
+    font-weight: 500;
+}
+
+.counter-container {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+}
+
+.counter-box {
+    background-color: var(--green-light);
+    border-radius: 10px;
+    padding: 1rem;
+    min-width: 100px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.counter-box:hover {
+    transform: translateY(-5px);
+}
+
+.counter-value {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--white);
+}
+
+.counter-label {
+    font-size: 0.9rem;
+    color: var(--white);
+    margin-top: 0.5rem;
+}
+
+.message {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin: 2rem 0;
+    color: var(--gray-dark);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.message span {
+    color: var(--brown-medium);
+    font-weight: 500;
+}
+
+/* Heart Animation */
+.heart-container {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.heart {
+    width: 30px;
+    height: 30px;
+    background-color: var(--brown-light);
+    position: relative;
+    transform: rotate(45deg);
+    animation: heartbeat 1.5s infinite;
+}
+
+.heart:before,
+.heart:after {
+    content: "";
+    width: 30px;
+    height: 30px;
+    background-color: var(--brown-light);
+    border-radius: 50%;
+    position: absolute;
+}
+
+.heart:before {
+    top: -15px;
+    left: 0;
+}
+
+.heart:after {
+    top: 0;
+    left: -15px;
+}
+
+@keyframes heartbeat {
+    0% {
+        transform: rotate(45deg) scale(1);
+    }
+    14% {
+        transform: rotate(45deg) scale(1.1);
+    }
+    28% {
+        transform: rotate(45deg) scale(1);
+    }
+    42% {
+        transform: rotate(45deg) scale(1.1);
+    }
+    70% {
+        transform: rotate(45deg) scale(1);
+    }
+}
+
+/* Responsive Styles */
+@media (min-width: 768px) {
+    .container {
+        flex-direction: row;
+        max-height: 600px;
+    }
+    
+    .carousel-container {
+        width: 50%;
+        height: auto;
+        border-radius: 15px 0 0 15px;
+    }
+    
+    .content {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        border-radius: 0 15px 15px 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .counter-container {
+        gap: 1rem;
+    }
+    
+    .counter-box {
+        min-width: 80px;
+        padding: 0.8rem;
+    }
+    
+    .counter-value {
+        font-size: 2rem;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .message {
+        font-size: 1rem;
+    }
+}
